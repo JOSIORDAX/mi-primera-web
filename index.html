@@ -3,102 +3,588 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi primera web</title>
+  <title>Empresas que represento</title>
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --ink: #17212f;
+      --muted: #5f6b7a;
+      --line: #d9e0e8;
+      --paper: #ffffff;
+      --soft: #f3f6f9;
+      --brand: #0f6b78;
+      --brand-dark: #0a4851;
+      --accent: #c28b2c;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      color: #18202a;
-      background: #f5f7fb;
-    }
-
-    main {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px;
-    }
-
-    .page {
-      width: min(920px, 100%);
-      display: grid;
-      gap: 28px;
-    }
-
-    .hero {
-      padding: clamp(32px, 7vw, 72px);
-      color: #ffffff;
-      background:
-        linear-gradient(rgba(12, 22, 35, 0.72), rgba(12, 22, 35, 0.72)),
-        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80");
-      background-position: center;
-      background-size: cover;
-      border-radius: 8px;
-      box-shadow: 0 24px 70px rgba(24, 32, 42, 0.22);
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    p {
-      margin: 0;
-      max-width: 660px;
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      line-height: 1.6;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      color: var(--ink);
+      background: var(--soft);
     }
 
     a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 6px;
-      color: #18202a;
-      background: #ffffff;
-      font-weight: 700;
+      color: inherit;
       text-decoration: none;
     }
 
-    .note {
-      padding: 18px 0 0;
-      color: #46515f;
-      font-size: 1rem;
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(23, 33, 47, 0.1);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--brand);
+      font-size: 0.95rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand);
+    }
+
+    .hero {
+      color: #ffffff;
+      background:
+        linear-gradient(90deg, rgba(8, 27, 36, 0.88), rgba(8, 27, 36, 0.55)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=82");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 520px;
+      margin: 0 auto;
+      display: grid;
+      align-content: center;
+      padding: 72px 0 92px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #d8b66d;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.5rem, 6vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin-top: 22px;
+      color: #e8eef2;
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      font-weight: 800;
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: var(--brand);
+    }
+
+    .button-primary:hover {
+      background: var(--brand-dark);
+    }
+
+    .button-secondary {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 74px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .about-text p,
+    .contact-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .company-card {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 18px 48px rgba(23, 33, 47, 0.08);
+    }
+
+    .company-visual {
+      min-height: 128px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 20px;
+      color: #ffffff;
+      background: #23414a;
+    }
+
+    .company-card:nth-child(2) .company-visual {
+      background: #5d4a78;
+    }
+
+    .company-card:nth-child(3) .company-visual {
+      background: #786230;
+    }
+
+    .logo-box {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .sector {
+      padding: 7px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.16);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .company-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 22px;
+    }
+
+    h3 {
+      font-size: 1.28rem;
+      letter-spacing: 0;
+    }
+
+    .company-content p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .company-link {
+      width: fit-content;
+      margin-top: auto;
+      color: var(--brand);
+      font-weight: 800;
+      border-bottom: 2px solid rgba(15, 107, 120, 0.25);
+    }
+
+    .about {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-layout {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 74px 0;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .profile-panel {
+      min-height: 330px;
+      display: grid;
+      align-content: end;
+      padding: 28px;
+      border-radius: 8px;
+      color: #ffffff;
+      background:
+        linear-gradient(rgba(15, 107, 120, 0.78), rgba(15, 107, 120, 0.78)),
+        url("https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&q=82");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .profile-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+
+    .about-text {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brand);
+      font-size: 1.45rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .contact-item span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .contact-item a {
+      color: var(--brand);
+      font-weight: 800;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 28px 16px;
+      color: #d7e0e4;
+      background: #17212f;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .hero-inner {
+        min-height: 500px;
+      }
+
+      .companies-grid,
+      .about-layout,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .hero-inner,
+      .section,
+      .about-layout {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .contact-item {
+        flex-direction: column;
+      }
+
+      .contact-item a {
+        text-align: left;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="page" aria-labelledby="titulo">
-      <div class="hero">
-        <h1 id="titulo">Mi primera web</h1>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegacion principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark">JR</span>
+        <span>Representaciones JOSIORDAX</span>
+      </a>
+      <div class="nav-links">
+        <a href="#empresas">Empresas</a>
+        <a href="#sobre-mi">Sobre mi</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-inner">
+        <p class="eyebrow">Representacion comercial</p>
+        <h1 id="titulo">Empresas que represento</h1>
         <p>
-          Hola, soy JOSIORDAX. Esta es mi primera página publicada desde GitHub.
+          Trabajo con empresas de confianza para ofrecer soluciones de calidad a mis clientes.
         </p>
-        <div class="actions">
-          <a href="https://github.com/JOSIORDAX/mi-primera-web">Ver repositorio</a>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#empresas">Ver empresas</a>
+          <a class="button button-secondary" href="#contacto">Contactar</a>
         </div>
       </div>
-      <p class="note">
-        Lista para seguir creciendo con nuevas secciones, imágenes y estilos.
-      </p>
+    </section>
+
+    <section class="section" id="empresas" aria-labelledby="empresas-titulo">
+      <div class="section-head">
+        <p class="eyebrow">Catalogo de colaboradores</p>
+        <h2 id="empresas-titulo">Soluciones de empresas especializadas</h2>
+        <p>
+          Estas tarjetas son ejemplos para que puedas cambiar nombres, logotipos,
+          descripciones y enlaces por los datos reales de tus empresas representadas.
+        </p>
+      </div>
+
+      <div class="companies-grid">
+        <article class="company-card">
+          <div class="company-visual">
+            <div class="logo-box">AL</div>
+            <span class="sector">Industria</span>
+          </div>
+          <div class="company-content">
+            <h3>Alianza Industrial</h3>
+            <p>
+              Fabricante especializado en equipos y suministros para proyectos
+              industriales con servicio tecnico cercano.
+            </p>
+            <a class="company-link" href="#contacto">Mas informacion</a>
+          </div>
+        </article>
+
+        <article class="company-card">
+          <div class="company-visual">
+            <div class="logo-box">NV</div>
+            <span class="sector">Tecnologia</span>
+          </div>
+          <div class="company-content">
+            <h3>Nova Soluciones</h3>
+            <p>
+              Empresa de soluciones tecnologicas para mejorar procesos,
+              comunicacion y gestion diaria de negocios.
+            </p>
+            <a class="company-link" href="#contacto">Mas informacion</a>
+          </div>
+        </article>
+
+        <article class="company-card">
+          <div class="company-visual">
+            <div class="logo-box">EM</div>
+            <span class="sector">Servicios</span>
+          </div>
+          <div class="company-content">
+            <h3>Empresa Modelo</h3>
+            <p>
+              Proveedor de servicios profesionales orientado a clientes que
+              buscan calidad, seriedad y seguimiento personalizado.
+            </p>
+            <a class="company-link" href="#contacto">Mas informacion</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="sobre-mi" aria-labelledby="sobre-mi-titulo">
+      <div class="about-layout">
+        <div class="profile-panel">
+          <strong>Representante comercial</strong>
+          <span>Conexion entre empresas de confianza y clientes que necesitan soluciones claras.</span>
+        </div>
+
+        <div class="about-text">
+          <p class="eyebrow">Sobre mi</p>
+          <h2 id="sobre-mi-titulo">Acompano a cada cliente con trato directo y profesional</h2>
+          <p>
+            Actuo como representante comercial y colaborador de empresas que
+            ofrecen productos y servicios de calidad. Mi objetivo es entender
+            cada necesidad, presentar la mejor opcion disponible y facilitar el
+            contacto entre cliente y empresa.
+          </p>
+          <div class="stats" aria-label="Datos destacados">
+            <div class="stat">
+              <strong>3</strong>
+              <span>Empresas de ejemplo</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>Punto de contacto</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Trato profesional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="section-head">
+        <p class="eyebrow">Contacto</p>
+        <h2 id="contacto-titulo">Hablemos de la solucion que necesitas</h2>
+        <p class="contact-copy">
+          Cambia estos datos por tu telefono, correo y enlace real de WhatsApp.
+        </p>
+      </div>
+
+      <div class="contact-list">
+        <div class="contact-item">
+          <span>Telefono</span>
+          <a href="tel:+34000000000">+34 000 000 000</a>
+        </div>
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:josiordax@hotmail.com">josiordax@hotmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span>WhatsApp</span>
+          <a href="https://wa.me/34000000000">Enviar mensaje</a>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <small>Representaciones JOSIORDAX. Empresas que represento.</small>
+  </footer>
 </body>
 </html>
